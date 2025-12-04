@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Course Registration System - Manage courses, students, and registrations efficiently" />
+  <meta name="author" content="Course Registration System" />
+  <meta name="theme-color" content="#2f6fed" />
+  <title>Course Registration System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+  <header role="banner">
+    <h1>Course Registration System</h1>
+    <p class="sub">Experiment 1 — Software Engineering (Course: CSE3005)</p>
+  </header>
+
+  <main role="main">
+    <section class="panel" aria-labelledby="courses-heading">
+      <h2 id="courses-heading">📚 Courses</h2>
+      <form id="courseForm" class="row" aria-label="Course management form">
+        <label for="courseCode" class="sr-only">Course Code</label>
+        <input 
+          id="courseCode" 
+          name="courseCode"
+          placeholder="Code (e.g. CSE101)" 
+          aria-label="Course code"
+          pattern="[A-Z]{2,4}[0-9]{3,4}"
+          title="Format: 2-4 letters followed by 3-4 numbers (e.g. CSE101)"
+          required 
+        />
+        <label for="courseTitle" class="sr-only">Course Title</label>
+        <input 
+          id="courseTitle" 
+          name="courseTitle"
+          placeholder="Title" 
+          aria-label="Course title"
+          required 
+        />
+        <label for="courseCredits" class="sr-only">Credits</label>
+        <input 
+          id="courseCredits" 
+          name="courseCredits"
+          placeholder="Credits" 
+          type="number" 
+          min="0" 
+          max="10"
+          step="0.5"
+          aria-label="Course credits"
+          required 
+        />
+        <button type="submit" aria-label="Add or update course">➕ Add / Update Course</button>
+      </form>
+      <div role="region" aria-labelledby="courses-heading" aria-live="polite">
+        <ul id="courseList" class="list" aria-label="List of courses"></ul>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="students-heading">
+      <h2 id="students-heading">👥 Students</h2>
+      <form id="studentForm" class="row" aria-label="Student management form">
+        <label for="studentRoll" class="sr-only">Roll Number</label>
+        <input 
+          id="studentRoll" 
+          name="studentRoll"
+          placeholder="Roll No" 
+          aria-label="Student roll number"
+          required 
+        />
+        <label for="studentName" class="sr-only">Student Name</label>
+        <input 
+          id="studentName" 
+          name="studentName"
+          placeholder="Name" 
+          aria-label="Student name"
+          required 
+        />
+        <label for="studentEmail" class="sr-only">Email Address</label>
+        <input 
+          id="studentEmail" 
+          name="studentEmail"
+          placeholder="Email" 
+          type="email" 
+          aria-label="Student email address"
+          required 
+        />
+        <button type="submit" aria-label="Add or update student">➕ Add / Update Student</button>
+      </form>
+      <div role="region" aria-labelledby="students-heading" aria-live="polite">
+        <ul id="studentList" class="list" aria-label="List of students"></ul>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="registration-heading">
+      <h2 id="registration-heading">📝 Register</h2>
+      <form class="row" aria-label="Course registration form">
+        <label for="regStudent" class="sr-only">Select Student</label>
+        <select 
+          id="regStudent" 
+          name="regStudent"
+          aria-label="Select student for registration"
+          required
+        >
+          <option value="">Select student</option>
+        </select>
+        <label for="regCourse" class="sr-only">Select Course</label>
+        <select 
+          id="regCourse" 
+          name="regCourse"
+          aria-label="Select course for registration"
+          required
+        >
+          <option value="">Select course</option>
+        </select>
+        <button 
+          id="btnRegister" 
+          type="button"
+          aria-label="Register selected student for selected course"
+        >
+          ✅ Register
+        </button>
+      </form>
+
+      <fieldset style="margin-top: 1rem;">
+        <legend>🔍 Filter Registrations</legend>
+        <div class="row">
+        <label for="filterStudent" class="sr-only">Filter by Student</label>
+        <select 
+          id="filterStudent" 
+          name="filterStudent"
+          aria-label="Filter registrations by student"
+        >
+          <option value="">All students</option>
+        </select>
+        <label for="filterCourse" class="sr-only">Filter by Course</label>
+        <select 
+          id="filterCourse" 
+          name="filterCourse"
+          aria-label="Filter registrations by course"
+        >
+          <option value="">All courses</option>
+        </select>
+        <button 
+          id="btnFilter" 
+          type="button"
+          aria-label="Apply filters"
+        >
+          🔍 Apply Filter
+        </button>
+        </div>
+      </fieldset>
+
+      <h3>📋 Registrations</h3>
+      <div role="region" aria-labelledby="registration-heading" aria-live="polite">
+        <ul id="regList" class="list" aria-label="List of course registrations"></ul>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="data-heading">
+      <h2 id="data-heading">💾 Data Management</h2>
+      <div class="row">
+        <button 
+          id="btnExport" 
+          type="button"
+          aria-label="Export all data as JSON file"
+        >
+          📤 Export JSON
+        </button>
+        <label for="importFile" class="sr-only">Import JSON File</label>
+        <input 
+          id="importFile" 
+          name="importFile"
+          type="file" 
+          accept="application/json,.json"
+          aria-label="Import data from JSON file"
+        />
+        <button 
+          id="btnClear" 
+          type="button"
+          aria-label="Clear all data"
+          class="btn-danger"
+        >
+          🗑️ Clear All Data
+        </button>
+      </div>
+      <div id="messages" aria-live="polite" role="status" aria-atomic="true"></div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <small>Course Registration System — Demo for Experiment 1 (CSE3005)</small>
+  </footer>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    input:focus, select:focus, button:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      transition: all 0.2s ease;
+    }
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>

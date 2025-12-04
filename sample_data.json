@@ -1,0 +1,87 @@
+{
+  "courses": [
+    {
+      "id": "c_cse101",
+      "code": "CSE101",
+      "title": "Introduction to Computer Science",
+      "credits": 3
+    },
+    {
+      "id": "c_cse201",
+      "code": "CSE201",
+      "title": "Data Structures and Algorithms",
+      "credits": 4
+    },
+    {
+      "id": "c_cse301",
+      "code": "CSE301",
+      "title": "Database Management Systems",
+      "credits": 3
+    },
+    {
+      "id": "c_cse401",
+      "code": "CSE401",
+      "title": "Software Engineering",
+      "credits": 4
+    },
+    {
+      "id": "c_math101",
+      "code": "MATH101",
+      "title": "Calculus I",
+      "credits": 4
+    }
+  ],
+  "students": [
+    {
+      "id": "s_2024001",
+      "rollNo": "2024001",
+      "name": "John Doe",
+      "email": "john.doe@university.edu"
+    },
+    {
+      "id": "s_2024002",
+      "rollNo": "2024002",
+      "name": "Jane Smith",
+      "email": "jane.smith@university.edu"
+    },
+    {
+      "id": "s_2024003",
+      "rollNo": "2024003",
+      "name": "Bob Johnson",
+      "email": "bob.johnson@university.edu"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg_001",
+      "studentId": "s_2024001",
+      "courseId": "c_cse101",
+      "timestamp": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "id": "reg_002",
+      "studentId": "s_2024001",
+      "courseId": "c_cse201",
+      "timestamp": "2024-01-15T11:00:00.000Z"
+    },
+    {
+      "id": "reg_003",
+      "studentId": "s_2024002",
+      "courseId": "c_cse101",
+      "timestamp": "2024-01-16T09:15:00.000Z"
+    },
+    {
+      "id": "reg_004",
+      "studentId": "s_2024002",
+      "courseId": "c_math101",
+      "timestamp": "2024-01-16T14:20:00.000Z"
+    },
+    {
+      "id": "reg_005",
+      "studentId": "s_2024003",
+      "courseId": "c_cse301",
+      "timestamp": "2024-01-17T10:00:00.000Z"
+    }
+  ]
+}
+
